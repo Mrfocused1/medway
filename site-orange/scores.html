@@ -187,10 +187,10 @@
 <div class="s-main">
   <!-- LATEST RESULTS -->
   <div>
-    <div class="sec-head"><h2>Latest Results</h2><a class="view-link" href="#">View All →</a></div>
-    <div class="tabs"><button class="tab active">▤ List View</button><button class="tab">📅 Calendar View</button></div>
+    <div class="sec-head"><h2>Season Results</h2><a class="view-link" href="https://www.playhq.com/basketball-victoria/org/knox-basketball-association-inc" target="_blank">PlayHQ →</a></div>
+    <p style="font-family:var(--body);color:var(--muted);font-size:13px;margin:0 0 14px">Final season standings & records — Knox BA, Thursday Men 8 (Summer 2024/25), live from PlayHQ.</p>
     <div id="matches"></div>
-    <button class="load-more">Load More Results ↓</button>
+    
   </div>
   <!-- SIDEBAR -->
   <div class="side">
@@ -198,10 +198,7 @@
       <div class="sec-head"><h2>Thursday Men 8</h2><a class="view-link" href="#">Full Table →</a></div>
       <table class="stand"><thead><tr><th>Pos</th><th class="tn">Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th></tr></thead><tbody id="standings"></tbody></table>
     </div>
-    <div>
-      <div class="sec-head"><h2>Player <span class="red">Leaders</span></h2><a class="view-link" href="#">View All →</a></div>
-      <div id="leaders"></div>
-    </div>
+    
     <div>
       <div class="sec-head"><h2>Top Scoring Teams <span style="font-size:12px;color:var(--muted);font-family:var(--body)">(pts/game)</span></h2></div>
       <div class="tstats" id="tstats"></div>
@@ -229,37 +226,25 @@
 </svg></div></a><a href="#" class="footer-tiktok w-inline-block"><div class="main-img w-embed"><svg width="100%" height="100%" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.7153 5.95097C19.4843 5.67283 18.3707 5.00115 17.5342 4.03231C16.6978 3.06348 16.1816 1.8473 16.0596 0.5583V0H11.7991V17.3454C11.8 18.115 11.5651 18.8654 11.1278 19.4903C10.6906 20.1152 10.073 20.5829 9.36266 20.8271C8.65231 21.0713 7.88518 21.0797 7.16993 20.8511C6.45469 20.6224 5.82759 20.1684 5.37746 19.5532C4.97419 19.0087 4.72725 18.359 4.66457 17.6778C4.60189 16.9966 4.72596 16.3109 5.02276 15.6984C5.31956 15.0858 5.77724 14.5708 6.34405 14.2116C6.91087 13.8524 7.56419 13.6633 8.23015 13.6657C8.59846 13.6635 8.96493 13.7191 9.31689 13.8306V9.38959C8.90731 9.33748 8.49456 9.31627 8.08196 9.32615C6.56214 9.36788 5.08715 9.86407 3.8376 10.754C2.58805 11.6439 1.61819 12.8888 1.04677 14.3364C0.475348 15.784 0.327176 17.3714 0.620396 18.9042C0.913616 20.4371 1.6355 21.8487 2.69765 22.9664C3.78623 24.1036 5.17924 24.8826 6.69969 25.2045C8.22014 25.5263 9.7994 25.3765 11.2368 24.7741C12.6742 24.1716 13.9048 23.1437 14.7724 21.821C15.6399 20.4983 16.1052 18.9404 16.109 17.3454V8.46332C17.8274 9.72451 19.8879 10.3992 21.9996 10.392V6.07786C21.5848 6.07962 21.171 6.03709 20.7647 5.95097H20.7153Z" fill="currentcolor"/>
 </svg></div></a></div></div></div></div><div class="hor-sep"></div><div class="footer-copyright"><div class="footer-betclic-text"><div class="biotif-11-400-13">© 2025 Medway Basketball Association</div></div><div class="footer-terms-wrap"><div class="footer-privacy-wrap"><a href="#" class="footer-copyright-text w-inline-block"><div class="biotif-11-400-13">Privacy Policy</div></a><a href="#" class="footer-copyright-text w-inline-block"><div class="biotif-11-400-13">Terms &amp; Conditions</div></a></div></div></div></div>
-
 <script>
 const ini = n => n.split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
-/* sample fixtures using the real 2025/26 roster (scores are placeholder) */
-const MATCHES = [
-  {a:"Guru Nanak",sa:87,b:"Sevenoaks Suns",sb:72,v:"Gravesend Grammar",d:"12 MAY 2025",div:"Division One",att:210},
-  {a:"Dartford Sharks",sa:93,b:"Wizards",sb:65,v:"Dartford Judo Centre",d:"11 MAY 2025",div:"Division One",att:180},
-  {a:"Bromley Fury",sa:78,b:"Richards Elite Kent",sb:81,v:"Bromley College",d:"11 MAY 2025",div:"Division One",att:150},
-  {a:"Maidstone Warriors",sa:64,b:"Eltham Eagles",sb:71,v:"Maidstone Leisure Centre",d:"10 MAY 2025",div:"Division Two",att:120},
-  {a:"Bexley Tigers",sa:69,b:"Crows",sb:58,v:"Leigh Academy Bexley",d:"10 MAY 2025",div:"Division Two",att:95}
-];
-document.getElementById('matches').innerHTML = MATCHES.map(m=>`
+/* REAL data via PlayHQ — Knox Basketball Association, Senior Domestic, Thursday Men 8 (Summer 2024/25) */
+const SUM = [{"t":"BBB","p":21,"w":18,"l":3,"pf":805,"pa":622,"diff":183,"pts":57},{"t":"Richard Wads","p":21,"w":16,"l":5,"pf":963,"pa":740,"diff":223,"pts":53},{"t":"JetBLACKS","p":21,"w":14,"l":7,"pf":661,"pa":648,"diff":13,"pts":49},{"t":"Pinky’s","p":21,"w":13,"l":8,"pf":730,"pa":661,"diff":69,"pts":47},{"t":"Austrapean","p":20,"w":9,"l":9,"pf":713,"pa":662,"diff":51,"pts":43},{"t":"Aquaholics","p":21,"w":6,"l":11,"pf":653,"pa":688,"diff":-35,"pts":37},{"t":"Pink Panthers","p":21,"w":7,"l":14,"pf":610,"pa":739,"diff":-129,"pts":35},{"t":"Simon","p":21,"w":6,"l":14,"pf":645,"pa":805,"diff":-160,"pts":34},{"t":"Threefrows","p":21,"w":5,"l":15,"pf":540,"pa":689,"diff":-149,"pts":32},{"t":"Y.E.S. Tigers","p":21,"w":4,"l":17,"pf":541,"pa":761,"diff":-220,"pts":29}];
+document.getElementById('matches').innerHTML = SUM.map(m=>`
   <article class="match">
     <div class="match-main">
-      <div class="mt">${m.a.replace(' ','<br>')}</div>
-      <div class="badge"><span class="ini">${ini(m.a)}</span></div>
-      <div class="sc">${m.sa}</div>
-      <div><div class="stat-final">Final</div><div class="mdate">${m.d}</div></div>
-      <div><div class="sc">${m.sb}</div></div>
+      <div class="mt">${m.t.replace(' ','<br>')}</div>
+      <div class="badge"><span class="ini">${ini(m.t)}</span></div>
+      <div class="sc">${m.w}</div>
+      <div><div class="stat-final">W \u2013 L</div><div class="mdate">${m.p} games</div></div>
+      <div><div class="sc">${m.l}</div></div>
     </div>
-    <div class="match-meta"><span><i>⌖</i>${m.v}</span><span><i>◉</i>${m.div}</span><span><i>♙</i>Att ${m.att}</span><button class="stats-btn">Stats</button></div>
+    <div class="match-meta"><span><i>\u25ce</i>${m.pf} PF</span><span><i>\u229d</i>${m.pa} PA</span><span><i>\u00b1</i>${m.diff>0?'+':''}${m.diff}</span><button class="stats-btn">${m.pts} pts</button></div>
   </article>`).join('');
 
-/* Division One standings (real teams; W/L placeholder) */
-const STAND = [{"t":"BBB","p":21,"w":18,"l":3,"pts":57},{"t":"Richard Wads","p":21,"w":16,"l":5,"pts":53},{"t":"JetBLACKS","p":21,"w":14,"l":7,"pts":49},{"t":"Pinky's","p":21,"w":13,"l":8,"pts":47},{"t":"Austrapean","p":20,"w":9,"l":9,"pts":43},{"t":"Aquaholics","p":21,"w":6,"l":11,"pts":37},{"t":"Pink Panthers","p":21,"w":7,"l":14,"pts":35},{"t":"Simon","p":21,"w":6,"l":14,"pts":34},{"t":"Threefrows","p":21,"w":5,"l":15,"pts":32},{"t":"Y.E.S. Tigers","p":21,"w":4,"l":17,"pts":29}];
+const STAND = [{"t":"BBB","p":21,"w":18,"l":3,"pts":57},{"t":"Richard Wads","p":21,"w":16,"l":5,"pts":53},{"t":"JetBLACKS","p":21,"w":14,"l":7,"pts":49},{"t":"Pinky’s","p":21,"w":13,"l":8,"pts":47},{"t":"Austrapean","p":20,"w":9,"l":9,"pts":43},{"t":"Aquaholics","p":21,"w":6,"l":11,"pts":37},{"t":"Pink Panthers","p":21,"w":7,"l":14,"pts":35},{"t":"Simon","p":21,"w":6,"l":14,"pts":34},{"t":"Threefrows","p":21,"w":5,"l":15,"pts":32},{"t":"Y.E.S. Tigers","p":21,"w":4,"l":17,"pts":29}];
 document.getElementById('standings').innerHTML = STAND.map((s,i)=>`
   <tr class="${i===0?'top':''}"><td>${i+1}</td><td class="tn">${s.t}</td><td>${s.p}</td><td>${s.w}</td><td>${s.l}</td><td>${s.pts}</td></tr>`).join('');
-
-const LEAD = [["Jordan Walia","Guru Nanak",324],["Marcus Reid","Sevenoaks Suns",298],["T. Osei","Dartford Sharks",275]];
-document.getElementById('leaders').innerHTML = LEAD.map(([n,t,s])=>`
-  <div class="leader"><div class="l"><div class="pi">${ini(n)}</div><div><div class="pn">${n}</div><div class="pt">${t}</div></div></div><div class="ls">${s}</div></div>`).join('');
 
 const TS = [["Richard Wads",100,"45.9"],["BBB",83,"38.3"],["Austrapean",78,"35.6"],["Pinky's",76,"34.8"],["JetBLACKS",69,"31.5"],["Aquaholics",68,"31.1"]];
 document.getElementById('tstats').innerHTML = TS.map(([l,w,v])=>`
@@ -268,5 +253,7 @@ document.getElementById('tstats').innerHTML = TS.map(([l,w,v])=>`
 <script>(function(){var btn=document.querySelector('.nav-menu-btn');if(!btn)return;
   btn.addEventListener('click',function(){document.body.classList.toggle('menu-open');});
   document.querySelectorAll('.nav-menu-link, .nav-menu a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open');});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('menu-open');});})();</script><script src="assets/js/countup.js"></script></body>
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.body.classList.remove('menu-open');});})();</script>
+<script src="assets/js/countup.js"></script>
+</body>
 </html>
