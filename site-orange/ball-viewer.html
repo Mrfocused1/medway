@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ART DUNK — 3D Basketball Preview</title>
+<script type="module" src="js/model-viewer.min.js"></script>
+<style>
+  :root { --orange:#e8741e; --red:#e7271f; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0c0c0c; color: #fff;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  body { display: flex; flex-direction: column; }
+  header { padding: 18px 26px; display:flex; align-items:center; gap:16px;
+    border-bottom: 1px solid #222; }
+  header b { font-size: 20px; letter-spacing: .04em; }
+  header span { color:#888; font-size: 13px; }
+  .stage { flex: 1; position: relative; }
+  model-viewer { width: 100%; height: 100%;
+    --poster-color: transparent;
+    background:
+      radial-gradient(120% 120% at 50% 30%, #1c1c1c 0%, #0c0c0c 60%, #060606 100%); }
+  .hint { position:absolute; left:50%; bottom:22px; transform:translateX(-50%);
+    color:#aaa; font-size:13px; background:rgba(0,0,0,.45); padding:8px 14px;
+    border-radius:999px; backdrop-filter: blur(4px); }
+  .bar { padding:10px 26px; border-top:1px solid #222; display:flex; gap:10px;
+    flex-wrap:wrap; align-items:center; }
+  button { background:#161616; color:#fff; border:1px solid #333; border-radius:8px;
+    padding:9px 14px; font-size:13px; cursor:pointer; }
+  button:hover { border-color:#555; }
+  button.on { background:var(--orange); border-color:var(--orange); color:#111; font-weight:600; }
+  .credit { margin-left:auto; color:#666; font-size:11px; }
+  .credit a { color:#888; }
+</style>
+</head>
+<body>
+  <header>
+    <b>ART DUNK</b>
+    <span>3D Basketball preview — drag to rotate, scroll to zoom</span>
+  </header>
+
+  <div class="stage">
+    <model-viewer
+      id="mv"
+      src="models/basketball-poly-google.glb"
+      alt="Orange basketball 3D model"
+      camera-controls
+      touch-action="pan-y"
+      auto-rotate
+      auto-rotate-delay="0"
+      rotation-per-second="40deg"
+      interaction-prompt="none"
+      shadow-intensity="1"
+      exposure="1.05"
+      environment-image="legacy"
+      camera-orbit="0deg 75deg 2.4m"
+      min-camera-orbit="auto auto 1.5m"
+      max-camera-orbit="auto auto 5m">
+    </model-viewer>
+    <div class="hint">Drag to spin · scroll to zoom · this is the real CC-BY basketball model</div>
+  </div>
+
+  <div class="bar">
+    <button id="spin" class="on">Auto-spin: ON</button>
+    <button id="reset">Reset view</button>
+    <button id="bg">Toggle background</button>
+    <span class="credit">Model: “Basketball” — Poly by Google (CC-BY 3.0), texture by Chahin ·
+      <a href="https://poly.pizza/m/eopD_12UuB8" target="_blank">source</a></span>
+  </div>
+
+  <script>
+    const mv = document.getElementById('mv');
+    const spin = document.getElementById('spin');
+    const reset = document.getElementById('reset');
+    const bg = document.getElementById('bg');
+    let spinning = true, dark = true;
+    spin.onclick = () => {
+      spinning = !spinning;
+      if (spinning) { mv.setAttribute('auto-rotate',''); spin.textContent='Auto-spin: ON'; spin.classList.add('on'); }
+      else { mv.removeAttribute('auto-rotate'); spin.textContent='Auto-spin: OFF'; spin.classList.remove('on'); }
+    };
+    reset.onclick = () => mv.cameraOrbit = '0deg 75deg 2.4m';
+    bg.onclick = () => {
+      dark = !dark;
+      mv.style.background = dark
+        ? 'radial-gradient(120% 120% at 50% 30%, #1c1c1c 0%, #0c0c0c 60%, #060606 100%)'
+        : 'radial-gradient(120% 120% at 50% 30%, #f2f2f2 0%, #d8d8d8 100%)';
+    };
+  </script>
+</body>
+</html>
